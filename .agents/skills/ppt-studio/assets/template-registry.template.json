@@ -1,0 +1,33 @@
+{
+  "registryVersion": "1.0",
+  "templates": [
+    {
+      "id": "[stable-template-id]",
+      "enabled": false,
+      "priority": 100,
+      "format": "pptx | potx",
+      "useWhen": [
+        "[approved business context]"
+      ],
+      "source": {
+        "kind": "local | knowledge-base",
+        "originalFileName": "[template file name]",
+        "pathOrReference": "[approved source location]",
+        "sha256": "[sha256 before profiling]"
+      },
+      "profile": {
+        "status": "pending | verified | refresh-required",
+        "version": null,
+        "catalogPath": null,
+        "profiledSha256": null
+      },
+      "quality": {
+        "lastValidatedAt": null,
+        "sampleRunReferences": [],
+        "knownLimitations": []
+      },
+      "owner": "[owner/team]",
+      "retentionAndDistribution": "[approved scope]"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Do not accidentally publish customer templates, generated decks, or run artifacts.
+*.pptx
+*.potx
+deck-assets/
+rendered/
+*.inspect.ndjson
+__pycache__/

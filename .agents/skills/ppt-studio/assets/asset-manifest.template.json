@@ -1,0 +1,42 @@
+{
+  "manifestVersion": "1.0",
+  "deck": {
+    "title": "[deck title]",
+    "visualRoute": "reference-template | registry-template | custom-direction | default-layout",
+    "assetRoot": "deck-assets",
+    "createdAt": "[YYYY-MM-DD]"
+  },
+  "assets": [
+    {
+      "assetId": "cover-hero-01",
+      "role": "cover-hero",
+      "slideNumbers": [
+        1
+      ],
+      "method": "user-supplied | official-source | generated-image | licensed-library | native-chart | native-diagram",
+      "localPath": "images/cover-hero-01.png",
+      "sha256": null,
+      "mimeType": "image/png",
+      "ooxmlPart": null,
+      "sourceUrl": null,
+      "generation": {
+        "prompt": null,
+        "model": null,
+        "purpose": "Illustrative non-factual cover visual"
+      },
+      "rights": {
+        "status": "pending-review",
+        "rightsholder": null,
+        "allowedUse": null
+      },
+      "crop": {
+        "aspectRatio": "16:9",
+        "placement": "right-half",
+        "notes": "Keep the focal subject inside the visible crop."
+      },
+      "reuseScope": "deck-only | reusable-company-approved | not-retain",
+      "speakerNotesCited": false,
+      "status": "planned"
+    }
+  ]
+}

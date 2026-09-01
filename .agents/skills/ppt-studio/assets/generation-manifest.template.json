@@ -1,0 +1,67 @@
+{
+  "manifestVersion": "1.0",
+  "run": {
+    "runId": "[unique run id]",
+    "createdAt": "[YYYY-MM-DD]",
+    "dataClass": "green | yellow | red | unclassified",
+    "handlingEnvironmentApproval": {
+      "status": "not-required | pending | confirmed",
+      "reference": null
+    },
+    "intake": {
+      "status": "complete | awaiting-input | blocked",
+      "missingRequired": [],
+      "assumptions": []
+    },
+    "scenarioPreset": "[preset id | custom narrative | not-applicable (blocked before narrative)]",
+    "assetPolicy": "not-applicable | supplied-only | approved-internal-only | bounded-default | external-approved | pending-classification",
+    "disposition": "planned | awaiting-input | awaiting-approval | generated | blocked",
+    "blockReason": "not-applicable | input-incomplete | handling-environment-confirmation-required | template-not-found | template-selection-ambiguous | template-profile-refresh-required | safety-data-boundary-stop"
+  },
+  "template": {
+    "mode": "not-applicable | none | designated | registry",
+    "availability": "not-applicable | available | unavailable | unverified",
+    "templateId": null,
+    "originalFileName": null,
+    "sourcePath": null,
+    "sha256": null,
+    "sourceHashBefore": null,
+    "sourceHashAfter": null,
+    "profileStatus": "not-applicable | pending | verified | refresh-required",
+    "workingCopy": {
+      "path": null,
+      "readOnly": null,
+      "status": "not-applicable | not-created | created | verified"
+    },
+    "selectionReason": "[why this one template was selected]"
+  },
+  "slides": [
+    {
+      "outputSlide": 1,
+      "role": "cover",
+      "sourceSlide": null,
+      "layoutId": "[semantic layout id or default route]",
+      "mappingStatus": "not-applicable | proposed | approved",
+      "assetIds": [
+        "cover-hero-01"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "template-hash",
+      "status": "not-applicable | pending | passed | failed | blocked",
+      "notes": null
+    },
+    {
+      "name": "rendered-slide-review",
+      "status": "not-applicable | pending | passed | failed | blocked",
+      "notes": null
+    }
+  ],
+  "assetAudit": {
+    "assetManifestCreated": false,
+    "externalAssetRequestStatus": "not-applicable | prohibited | not-requested | approved"
+  },
+  "assetManifestPath": "[deck-assets/asset-manifest.json | null when blocked before asset planning]"
+}

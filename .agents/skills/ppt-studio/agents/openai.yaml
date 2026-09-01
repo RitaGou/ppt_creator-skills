@@ -1,0 +1,6 @@
+interface:
+  display_name: "商务 PPT Studio"
+  short_description: "生成可编辑商务 PPT、复用企业模板并沉淀可追溯的封面图标等视觉资产"
+  default_prompt: "使用 $ppt-studio 为我的项目复盘创建一份包含封面图、页面图标和可复用资产清单的 PPTX。"
+policy:
+  allow_implicit_invocation: true
