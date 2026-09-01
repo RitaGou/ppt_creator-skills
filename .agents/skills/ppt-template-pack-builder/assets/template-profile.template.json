@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0",
+  "sourceSha256": null,
+  "slideSize": {
+    "width": null,
+    "height": null
+  },
+  "styleBaseline": {
+    "theme": null,
+    "colorTokens": [],
+    "fontFamilies": [],
+    "textStyles": [],
+    "headerFooter": {
+      "hasHeader": null,
+      "hasFooter": null,
+      "hasPageNumber": null
+    }
+  },
+  "pageBlueprints": [
+    {
+      "blueprintId": "cover",
+      "sourceSlides": [
+        1
+      ],
+      "roles": [
+        "cover"
+      ],
+      "layoutStrategy": "reuse-or-extend",
+      "editableZones": [],
+      "assetSlots": [],
+      "textCapacity": {
+        "title": null,
+        "body": null
+      },
+      "boundaryOptions": {
+        "pageFramework": [
+          "preserve",
+          "adapt",
+          "confirm"
+        ],
+        "visualAssets": [
+          "preserve",
+          "adapt",
+          "confirm"
+        ]
+      }
+    }
+  ],
+  "moduleBlueprints": [
+    {
+      "moduleId": "two-column-insight",
+      "sourceSlides": [],
+      "purpose": "comparison-or-summary",
+      "styleReferences": [],
+      "editableZones": [],
+      "boundaryOptions": [
+        "preserve",
+        "adapt",
+        "confirm"
+      ]
+    }
+  ]
+}
+

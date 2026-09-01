@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "1.0",
+  "packageId": "market-research-playful",
+  "displayName": "市场调研·活力手账",
+  "aliases": [
+    "活力手账"
+  ],
+  "version": "v1",
+  "activeVersion": "v1",
+  "status": "draft",
+  "source": {
+    "file": "original-template.pptx",
+    "sha256": null,
+    "capturedAt": null
+  },
+  "framework": {
+    "defaultOutline": [],
+    "defaultPageCount": 12,
+    "pageBlueprintIds": [],
+    "moduleBlueprintIds": []
+  },
+  "defaults": {
+    "language": "zh-CN",
+    "maxWordsPerSlide": 70,
+    "contentPolicy": "template-default",
+    "assetPolicy": "template-default"
+  },
+  "boundaries": {
+    "visualBaseline": {
+      "state": "preserve",
+      "allowedChanges": []
+    },
+    "pageFramework": {
+      "state": "adapt",
+      "allowedChanges": [
+        "reuse-page-blueprints",
+        "extend-module-blueprints"
+      ]
+    },
+    "visualAssets": {
+      "state": "adapt",
+      "allowedChanges": [
+        "replace-approved-asset-slots"
+      ]
+    },
+    "contentAndData": {
+      "state": "adapt",
+      "allowedChanges": [
+        "write-content",
+        "create-native-charts"
+      ]
+    },
+    "delivery": {
+      "state": "preserve",
+      "allowedChanges": []
+    }
+  },
+  "runOverridePolicy": {
+    "callerBoundariesOverrideDefaults": true
+  },
+  "owner": {
+    "name": null
+  }
+}
+
