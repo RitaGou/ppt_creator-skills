@@ -10,14 +10,12 @@
   "status": "draft",
   "source": {
     "file": "original-template.pptx",
-    "sha256": null,
-    "capturedAt": null
+    "sha256": null
   },
   "framework": {
     "defaultOutline": [],
     "defaultPageCount": 12,
-    "pageBlueprintIds": [],
-    "moduleBlueprintIds": []
+    "pageBlueprintIds": []
   },
   "defaults": {
     "language": "zh-CN",
@@ -26,34 +24,26 @@
     "assetPolicy": "template-default"
   },
   "boundaries": {
-    "visualBaseline": {
-      "state": "preserve",
-      "allowedChanges": []
-    },
-    "pageFramework": {
-      "state": "adapt",
-      "allowedChanges": [
-        "reuse-page-blueprints",
-        "extend-module-blueprints"
-      ]
-    },
-    "visualAssets": {
-      "state": "adapt",
-      "allowedChanges": [
-        "replace-approved-asset-slots"
-      ]
-    },
-    "contentAndData": {
-      "state": "adapt",
-      "allowedChanges": [
-        "write-content",
-        "create-native-charts"
-      ]
-    },
-    "delivery": {
-      "state": "preserve",
-      "allowedChanges": []
-    }
+    "visualBaseline": "preserve",
+    "pageFramework": "adapt",
+    "visualAssets": "adapt",
+    "contentAndData": "adapt",
+    "delivery": "preserve"
+  },
+  "boundaryOptions": {
+    "visualBaseline": [],
+    "pageFramework": [
+      "reuse-page-blueprints",
+      "extend-module-blueprints"
+    ],
+    "visualAssets": [
+      "replace-approved-asset-slots"
+    ],
+    "contentAndData": [
+      "write-content",
+      "create-native-charts"
+    ],
+    "delivery": []
   },
   "runOverridePolicy": {
     "callerBoundariesOverrideDefaults": true
@@ -62,4 +52,3 @@
     "name": null
   }
 }
-
