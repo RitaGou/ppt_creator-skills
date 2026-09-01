@@ -27,4 +27,3 @@
 5. 若同一类别同时出现相反要求，例如“保持封面图，同时替换封面图”，只询问该冲突项。
 
 把自然语言转换为类别级边界。例如“保留字体、配色、页眉页脚；封面图和正文配图可按主题替换；允许新增两页”应得到：`visualBaseline=preserve`、`visualAssets=adapt`、`pageFramework=adapt`。
-

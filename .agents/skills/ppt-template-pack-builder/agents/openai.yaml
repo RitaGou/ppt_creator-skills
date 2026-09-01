@@ -4,4 +4,3 @@ interface:
   default_prompt: "使用 $ppt-template-pack-builder 将这份 PPTX 创建为可复用模板包，并帮我确认哪些内容保持、可变或每次确认。"
 policy:
   allow_implicit_invocation: true
-

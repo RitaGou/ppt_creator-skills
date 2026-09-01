@@ -1,7 +1,9 @@
 ---
 name: ppt-studio
-description: "Use when creating or substantially rebuilding editable business PowerPoint/PPTX decks with business-scenario guidance, designated-template reuse, and traceable cover, image, icon, chart, and diagram assets. Applies to executive reports, client proposals, project reviews, strategy decks, training decks, launches, and other requests that need a finished PPTX. Do not use for read-only analysis, a wording-only edit, or a discussion that does not need a deck artifact."
+description: "Use when creating or substantially rebuilding editable business PowerPoint/PPTX decks with business-scenario guidance and traceable cover, image, icon, chart, and diagram assets. Applies to executive reports, client proposals, project reviews, strategy decks, training decks, launches, and other requests that need a finished PPTX. Do not use for a named template package, read-only analysis, a wording-only edit, or a discussion that does not need a deck artifact."
 ---
+
+> **模板包优先路由。** 用户以名称、别名或 `packageId@version` 点名模板包时，一律转交 `$ppt-template-fill`，即使当前只给了名称或名称尚未解析；由填充器按单一追问契约补足内容或报告未发布版本。只有未点名模板包时，研究优先或全新视觉方向才继续使用本 Skill。
 
 # 商务 PPT Studio
 

@@ -5,11 +5,12 @@
 检查：
 
 1. 原始 PPTX/POTX、SHA-256、母版、布局、文字样式和页眉页脚已记录；
-2. `profile.json` 含页面/模块蓝图、可编辑区域、文字容量和边界选项；
-3. `assets-manifest.json` 含封面图、图片、图标、Logo 等资产的源页、对象锚点、哈希和替换选项；
-4. 样例按确认的保持/可变/每次确认边界生成，且输出为可编辑 PPTX；
-5. 使用 **Presentations** 渲染每页，检查文字可读、图片裁切、页码和页眉页脚；
-6. 创建者确认样例后，将 package 状态写为 `verified` 并设置 `activeVersion`。
+2. `package.json.source.sha256`、`profile.json.sourceSha256` 与 `assets-manifest.json.sourceSha256` 完全相同，且等于原件实算 SHA-256；
+3. `profile.json` 含页面/模块蓝图、可编辑区域、文字容量和边界选项；
+4. `assets-manifest.json` 含封面图、图片、图标、Logo 等资产的源页、对象锚点、哈希和替换选项；
+5. 样例按确认的保持/可变/每次确认边界生成，且输出为可编辑 PPTX；
+6. 使用 **Presentations** 渲染每页，检查文字可读、图片裁切、页码和页眉页脚；
+7. 创建者确认样例后，`package.json.status` 为 `verified`，目录版本、`package.json.version`、索引版本、索引相对路径及三份 manifest 的源文件 SHA-256 均一致；
+8. `index.json` 中仅登记已验证版本，并为同一 `packageId` 设置一个明确的 `activeVersion`。
 
-如果更新了原始 PPTX/POTX，计算新 SHA-256，保留旧版本并新建一个 package 版本；随后重新提取、确认和验证。
-
+如果更新了原始 PPTX/POTX，计算新 SHA-256，保留旧版本并新建一个 package 版本；随后重新提取、确认和验证，再在 `index.json` 中显式切换活动版本。

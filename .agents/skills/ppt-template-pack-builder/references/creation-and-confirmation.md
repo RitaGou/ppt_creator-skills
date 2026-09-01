@@ -2,22 +2,27 @@
 
 ## 最小输入
 
-创建者只需提供原始 PPTX/POTX、模板包名称和所有者。若希望使用默认结构，可额外说明适用场景、默认大纲、页数、语言、字数、内容方式与素材方式。不要要求创建者一开始填写每页布局、文字框坐标或资产 ID。
+创建者只需提供原始 PPTX/POTX、模板包名称和所有者。模板库位置只在首次创建时按需指定；未指定时使用当前工作区的 `.agents/ppt-template-packs/`。若希望使用默认结构，可额外说明适用场景、默认大纲、页数、语言、字数、内容方式与素材方式。不要要求创建者一开始填写每页布局、文字框坐标或资产 ID。
 
 ## 自动提取与包目录
 
 使用 **Presentations** 读取原件，检查母版、布局、占位符、文字样式、页眉页脚、页码、图片、图标、Logo、表格和图表。建立：
 
 ```text
-[模板包目录]/
-├── original-template.pptx
-├── package.json
-├── profile.json
-├── assets-manifest.json
-└── validation/
+[模板库根目录]/
+├── index.json
+└── [packageId]/
+    └── [version]/
+        ├── original-template.pptx
+        ├── package.json
+        ├── profile.json
+        ├── assets-manifest.json
+        └── validation/
 ```
 
 把原件的 SHA-256 写入 `package.json.source.sha256`；`profile.json.sourceSha256` 和 `assets-manifest.json.sourceSha256` 必须使用同一值。原件发生变化时，创建新版本，不覆盖旧版本。
+
+草稿包不写入 `index.json`。发布时才新增或更新索引项：`displayName`、`aliases`、`packageId`、`activeVersion`，以及每个版本的 `version`、`status: verified`、相对 `path` 和 `sourceSha256`。这个索引是后续按名称调用的唯一来源。
 
 ## 创建者确认卡
 
@@ -39,12 +44,14 @@
 
 ## 发布与教学
 
-创建者确认样例后，把版本设为 `verified` 并设置 `activeVersion`。交付下面的调用卡：
+创建者确认样例后，把版本设为 `verified`，并把已验证版本、相对路径、源文件 SHA-256 与 `activeVersion` 写入 `index.json`。交付下面的调用卡：
+
+最短调用只需模板包名称和内容依据；大框架与边界都是可选覆盖。
 
 ```text
 模板包「市场调研·活力手账@v1」已创建。
 默认保持：字体、配色、页眉页脚。
 默认可变：封面图、正文配图、页内模块。
 调用：用「市场调研·活力手账」生成 PPT；大框架：市场趋势、产品地图、技术路线、结论建议；内容：XR 直播间，面向内部领导；边界：保留字体、配色和页眉页脚，封面图可变。
+最短调用：用「市场调研·活力手账」生成 PPT；内容：XR 直播间，面向内部领导。
 ```
-
