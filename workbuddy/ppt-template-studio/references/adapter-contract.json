@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0",
+  "skill": "ppt-template-studio",
+  "templateLibrary": {
+    "defaultRelativeRoot": "ppt-template-library",
+    "indexFile": "index.json",
+    "packageFiles": [
+      "original-template.pptx",
+      "package.json",
+      "profile.json",
+      "assets-manifest.json"
+    ]
+  },
+  "routePriority": [
+    "build-template-package",
+    "template-fill",
+    "ppt-studio"
+  ],
+  "buildTemplatePackage": {
+    "minimumInput": [
+      "templateSource",
+      "templatePackageName",
+      "templatePackageOwner"
+    ],
+    "routeSignals": [
+      "operation=build-template-package",
+      "templateSource"
+    ]
+  },
+  "templateFill": {
+    "minimumInput": [
+      "templateRef",
+      "contentBasis"
+    ],
+    "referenceFields": [
+      "displayName",
+      "aliases",
+      "packageId@version"
+    ],
+    "namedTemplateFallback": "none"
+  },
+  "templatePublication": {
+    "requiredIndexStatus": "verified",
+    "requiredPackageStatus": "verified",
+    "requireSourceSha256Agreement": true,
+    "allowPathOutsideLibrary": false
+  },
+  "boundaries": {
+    "categories": [
+      "visualBaseline",
+      "pageFramework",
+      "visualAssets",
+      "contentAndData",
+      "delivery"
+    ],
+    "values": [
+      "preserve",
+      "adapt",
+      "confirm"
+    ],
+    "callerOverridesOnlyExplicitCategories": true
+  },
+  "pageCount": {
+    "type": "positive-integer",
+    "scope": "pageFramework"
+  },
+  "requiredRuntimeCapabilities": [
+    "editable-pptx",
+    "render-or-preview"
+  ],
+  "requiredRuntimeCapabilitiesApplyTo": [
+    "build-template-package",
+    "template-fill",
+    "ppt-studio"
+  ]
+}

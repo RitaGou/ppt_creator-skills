@@ -19,6 +19,18 @@
 | `$ppt-template-fill` | 已有模板包，想用主题、内容或大框架快速生成 PPT。 |
 | `$ppt-studio` | 没有模板包、需要先做研究，或需要全新视觉方向的 PPT。 |
 
+## WorkBuddy 版
+
+仓库同时提供一个可直接上传的 WorkBuddy 包：[ppt-template-studio.zip](workbuddy/ppt-template-studio.zip)，并保留其[源目录](workbuddy/ppt-template-studio/)。它把“建模板包、用模板包填充、无模板新建 PPT”合并在自然语言入口中，不需要输入 Codex 的 `$skill` 口令。
+
+在 WorkBuddy 的“技能”页选择“添加技能 → 上传技能”，选中 `ppt-template-studio.zip` 并启用；在任务中启用 PPTX 办公文档能力。模板文件放在任务工作区的 `ppt-template-library/`，不随上传包复制。日常调用仍然只需：
+
+```text
+用「模板包名称」生成 PPT；内容：[主题、简要内容、提纲或材料]。
+```
+
+完整的安装、模板库位置和三类调用示例见 [WorkBuddy PPT Template Studio](workbuddy/ppt-template-studio/README.md)。
+
 ## 创建模板包
 
 准备一份你希望复用的原始 PPTX/POTX，然后这样说：

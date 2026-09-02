@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "packages": [
+    {
+      "displayName": "市场调研·活力手账",
+      "aliases": [
+        "活力手账"
+      ],
+      "packageId": "market-research-playful",
+      "activeVersion": "v1",
+      "versions": [
+        {
+          "version": "v1",
+          "status": "verified",
+          "path": "market-research-playful/v1",
+          "sourceSha256": "c45307025479e50aff3296950905d9bb3f6062c104f1ce1b3673c1b0e7947ba4"
+        }
+      ]
+    }
+  ]
+}

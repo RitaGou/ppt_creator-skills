@@ -1,0 +1,35 @@
+{
+  "runId": null,
+  "template": {
+    "libraryRoot": null,
+    "indexPath": null,
+    "packagePath": null,
+    "packageId": null,
+    "displayName": null,
+    "resolvedVersion": null,
+    "sourceSha256": null
+  },
+  "input": {
+    "topic": null,
+    "contentBasis": null,
+    "pageCountOverride": null,
+    "frameworkOverride": null,
+    "boundaryOverride": {}
+  },
+  "effective": {
+    "boundaries": {
+      "visualBaseline": "preserve",
+      "pageFramework": "adapt",
+      "visualAssets": "adapt",
+      "contentAndData": "adapt",
+      "delivery": "preserve"
+    },
+    "pageCount": 12
+  },
+  "generation": {
+    "pageBlueprints": [],
+    "expandedModules": [],
+    "assets": []
+  },
+  "checks": []
+}

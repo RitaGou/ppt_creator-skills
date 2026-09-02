@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "packageId": "market-research-playful",
+  "displayName": "市场调研·活力手账",
+  "aliases": [
+    "活力手账"
+  ],
+  "version": "v1",
+  "status": "verified",
+  "source": {
+    "file": "original-template.pptx",
+    "sha256": "c45307025479e50aff3296950905d9bb3f6062c104f1ce1b3673c1b0e7947ba4"
+  },
+  "framework": {
+    "defaultOutline": [
+      "市场趋势",
+      "产品地图",
+      "技术路线",
+      "结论建议"
+    ],
+    "defaultPageCount": 12,
+    "pageBlueprintIds": [
+      "cover",
+      "market-map",
+      "conclusion"
+    ]
+  },
+  "defaults": {
+    "language": "zh-CN",
+    "maxWordsPerSlide": 70,
+    "contentPolicy": "template-default",
+    "assetPolicy": "template-default"
+  },
+  "boundaries": {
+    "visualBaseline": "preserve",
+    "pageFramework": "adapt",
+    "visualAssets": "adapt",
+    "contentAndData": "adapt",
+    "delivery": "preserve"
+  }
+}

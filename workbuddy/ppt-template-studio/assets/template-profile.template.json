@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "sourceSha256": null,
+  "slideSize": {
+    "width": null,
+    "height": null
+  },
+  "styleBaseline": {
+    "theme": null,
+    "colorTokens": [],
+    "fontFamilies": [],
+    "textStyles": [],
+    "headerFooter": {
+      "hasHeader": null,
+      "hasFooter": null,
+      "hasPageNumber": null
+    }
+  },
+  "pageBlueprints": [],
+  "moduleBlueprints": []
+}

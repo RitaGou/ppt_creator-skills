@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "sourceSha256": null,
+  "assets": [
+    {
+      "assetId": "cover-hero-01",
+      "role": "cover-hero",
+      "sourceSlide": 1,
+      "objectAnchor": null,
+      "sha256": null,
+      "defaultBoundary": "adapt",
+      "replacementOptions": {
+        "sources": [
+          "package-assets",
+          "user-supplied",
+          "generated"
+        ],
+        "preserveFrame": true,
+        "preserveCropWhenPossible": true
+      }
+    }
+  ]
+}

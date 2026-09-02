@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0",
+  "sourceSha256": "c45307025479e50aff3296950905d9bb3f6062c104f1ce1b3673c1b0e7947ba4",
+  "slideSize": {
+    "width": 1280,
+    "height": 720
+  },
+  "styleBaseline": {
+    "colorTokens": [
+      "emerald-400",
+      "slate-950",
+      "slate-50"
+    ],
+    "fontFamilies": [],
+    "headerFooter": {
+      "hasHeader": false,
+      "hasFooter": true,
+      "hasPageNumber": false
+    }
+  },
+  "pageBlueprints": [
+    {
+      "blueprintId": "cover",
+      "sourceSlides": [
+        1
+      ],
+      "roles": [
+        "cover"
+      ],
+      "layoutStrategy": "reuse-or-extend",
+      "editableZones": [
+        "title",
+        "subtitle",
+        "hero"
+      ],
+      "assetSlots": [
+        "cover-hero-01"
+      ],
+      "textCapacity": {
+        "title": 24,
+        "body": 50
+      }
+    }
+  ],
+  "moduleBlueprints": []
+}
