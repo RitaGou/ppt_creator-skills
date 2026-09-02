@@ -67,7 +67,7 @@
 当前环境提供 Node 时，可运行：
 
 ```text
-node scripts/template-package-resolver.mjs --library-root "<模板库根目录>" --template-ref "市场调研·活力手账" --content "XR 直播间市场调研" --capabilities editable-pptx,render-or-preview
+node scripts/template-package-resolver.mjs --workspace-root "<工作区>" --template-ref "市场调研·活力手账" --content "XR 直播间市场调研" --capabilities editable-pptx,render-or-preview
 ```
 
 要启动建包路线，可运行：

@@ -47,6 +47,8 @@
 <工作区>/ppt-template-library/index.json
 ```
 
+日常用户不需要填写这个路径。仅在管理员调试解析器时，使用 `--workspace-root "<工作区>"` 让它自动定位该默认模板库；若要调用另一个库，再显式填写库根目录。
+
 一个模板包包含原始 `original-template.pptx`、`package.json`、`profile.json` 和 `assets-manifest.json`。这让同一套模板可以由不同人点名调用，也能持续增加版本。
 
 ## 这个包的三个入口

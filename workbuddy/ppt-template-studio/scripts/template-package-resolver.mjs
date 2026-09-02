@@ -153,6 +153,20 @@ export function mergeBoundaries(defaultBoundaries, boundaryOverride = {}) {
   }
   return merged;
 }
+function resolveLibraryRoot(input, contract) {
+  if (hasText(input.libraryRoot)) return input.libraryRoot.trim();
+
+  const workspaceRoot = hasText(input.workspaceRoot) ? input.workspaceRoot : process.cwd();
+  const defaultRelativeRoot = contract.templateLibrary?.defaultRelativeRoot;
+  if (!hasText(defaultRelativeRoot)) throw new Error("template-library-root-not-configured");
+
+  return path.resolve(workspaceRoot, defaultRelativeRoot);
+}
+
+function nextBoundaryConfirmation(effectiveBoundaries) {
+  return boundaryKeys.find((key) => effectiveBoundaries[key] === "confirm") ?? null;
+}
+
 
 async function loadContract() {
   return readJson(contractPath);
@@ -241,17 +255,28 @@ export async function resolveTemplateInvocation(input = {}) {
     return blocked(initialRoute.route, "runtime-capability-unavailable");
   }
   if (initialRoute.route !== "template-fill" || initialRoute.state !== "ready") return initialRoute;
-  if (!hasText(input.libraryRoot)) {
-    return { route: "template-fill", state: "needs-input", missing: ["libraryRoot"] };
-  }
 
   try {
     const contract = await loadContract();
-    const resolved = await resolvePublishedPackage(input);
+    const libraryRoot = resolveLibraryRoot(input, contract);
+    const resolved = await resolvePublishedPackage({ ...input, libraryRoot });
     const effectiveBoundaries = mergeBoundaries(
       resolved.packageManifest.boundaries,
       input.boundaryOverride ?? {},
     );
+    const confirmationCategory = nextBoundaryConfirmation(effectiveBoundaries);
+    if (confirmationCategory) {
+      return {
+        route: "template-fill",
+        state: "needs-input",
+        missing: [`boundaryOverride.${confirmationCategory}`],
+        confirmation: {
+          category: confirmationCategory,
+          allowedStates: ["preserve", "adapt"],
+        },
+      };
+    }
+
     const pageCount = resolvePageCount(resolved.packageManifest, input, effectiveBoundaries);
     if (!Number.isInteger(pageCount) || pageCount <= 0) {
       return blocked("template-fill", "template-not-verified");
@@ -299,14 +324,19 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const runtimeCapabilities = hasText(args.capabilities)
     ? args.capabilities.split(",").map((item) => item.trim()).filter(Boolean)
     : [];
+  const boundaryOverride = hasText(args["boundary-override"])
+    ? JSON.parse(args["boundary-override"])
+    : undefined;
   const result = await resolveTemplateInvocation({
     operation: args.operation,
     templateSource: args["template-source"],
     templatePackageName: args["template-package-name"],
     templatePackageOwner: args["template-package-owner"],
     libraryRoot: args["library-root"],
+    workspaceRoot: args["workspace-root"],
     templateRef: args["template-ref"],
     contentBasis: args.content,
+    boundaryOverride,
     runtimeCapabilities,
     pageCountOverride: args["page-count"] ? Number(args["page-count"]) : undefined,
   });

@@ -106,6 +106,58 @@ test("resolves display name, alias, and id@version to the verified active packag
   });
 });
 
+test("derives the default template library from the supplied workspace root", async () => {
+  await withFixtureCopy(async (libraryRoot) => {
+    const result = await resolveTemplateInvocation({
+      workspaceRoot: path.dirname(libraryRoot),
+      templateRef: "市场调研·活力手账",
+      contentBasis: "XR 直播间市场调研，面向内部领导。",
+      runtimeCapabilities: requiredCapabilities,
+    });
+
+    assert.equal(result.state, "ready");
+    assert.equal(result.route, "template-fill");
+    assert.equal(result.template.packageId, "market-research-playful");
+  });
+});
+
+test("asks for one confirm boundary decision before it returns a ready template fill", async () => {
+  await withFixtureCopy(async (libraryRoot) => {
+    const packageManifestPath = path.join(libraryRoot, "market-research-playful", "v1", "package.json");
+    await updateJson(packageManifestPath, (packageManifest) => {
+      packageManifest.boundaries.visualAssets = "confirm";
+    });
+
+    const awaitingDecision = await resolveTemplateInvocation({
+      libraryRoot,
+      templateRef: "市场调研·活力手账",
+      contentBasis: "XR 直播间市场调研，面向内部领导。",
+      runtimeCapabilities: requiredCapabilities,
+    });
+
+    assert.deepEqual(awaitingDecision, {
+      route: "template-fill",
+      state: "needs-input",
+      missing: ["boundaryOverride.visualAssets"],
+      confirmation: {
+        category: "visualAssets",
+        allowedStates: ["preserve", "adapt"],
+      },
+    });
+
+    const resolved = await resolveTemplateInvocation({
+      libraryRoot,
+      templateRef: "市场调研·活力手账",
+      contentBasis: "XR 直播间市场调研，面向内部领导。",
+      boundaryOverride: { visualAssets: "adapt" },
+      runtimeCapabilities: requiredCapabilities,
+    });
+
+    assert.equal(resolved.state, "ready");
+    assert.equal(resolved.effective.boundaries.visualAssets, "adapt");
+  });
+});
+
 test("preserves unspecified boundaries while allowing one explicit category override", () => {
   const effective = mergeBoundaries(
     {
@@ -279,6 +331,34 @@ test("CLI forwards build-template-package fields to the resolver", async () => {
   });
 });
 
+test("CLI forwards a boundary decision for a named template fill", async () => {
+  await withFixtureCopy(async (libraryRoot) => {
+    const packageManifestPath = path.join(libraryRoot, "market-research-playful", "v1", "package.json");
+    await updateJson(packageManifestPath, (packageManifest) => {
+      packageManifest.boundaries.visualAssets = "confirm";
+    });
+
+    const resolverPath = path.join(packageRoot, "scripts", "template-package-resolver.mjs");
+    const { stdout } = await execFileAsync(process.execPath, [
+      resolverPath,
+      "--library-root",
+      libraryRoot,
+      "--template-ref",
+      "市场调研·活力手账",
+      "--content",
+      "XR 直播间市场调研，面向内部领导。",
+      "--boundary-override",
+      JSON.stringify({ visualAssets: "adapt" }),
+      "--capabilities",
+      "editable-pptx,render-or-preview",
+    ]);
+
+    const result = JSON.parse(stdout);
+    assert.equal(result.state, "ready");
+    assert.equal(result.effective.boundaries.visualAssets, "adapt");
+  });
+});
+
 test("ships an upload archive that exactly matches its source directory", async () => {
   const archiveHelper = path.join(here, "assert-upload-archive.ps1");
   const archivePath = path.resolve(here, "../ppt-template-studio.zip");
@@ -343,5 +423,7 @@ test("ships a valid Office Open XML fixture and a self-contained adapter contrac
   ]);
   assert.match(skill, /^---\r?\nname: ppt-template-studio\r?\n/m);
   assert.match(skill, /\[适配契约\]\(references\/adapter-contract\.json\)/);
+  assert.match(skill, /workspaceRoot/);
   assert.match(readme, /WorkBuddy/);
+  assert.match(readme, /--workspace-root/);
 });
