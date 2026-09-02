@@ -1,0 +1,3 @@
+# Keep the distributable WorkBuddy skill source byte-stable with GitHub archives.
+workbuddy/ppt-template-studio/** text eol=lf
+workbuddy/ppt-template-studio.zip binary
